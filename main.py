@@ -103,14 +103,12 @@ class ClaimsGUI:
                 messagebox.showerror("Fel", "Vänligen fyll i alla obligatoriska fält!")
                 return
             
-            # Validera datumformat
             try:
                 datetime.strptime(date, "%Y-%m-%d")
             except ValueError:
                 messagebox.showerror("Fel", "Ogiltigt datumformat! Använd YYYY-MM-DD")
                 return
             
-            # Validera belopp
             try:
                 amount = float(amount)
                 if amount <= 0:
@@ -166,7 +164,6 @@ class ClaimsGUI:
             claims_window.title("Alla Skadeanmälningar")
             claims_window.geometry("800x400")
             
-            # Skapa trädvy för att visa data
             tree = ttk.Treeview(claims_window, columns=("ID", "Datum", "Fordonsklass", "Belopp", "Beskrivning"), show="headings")
             tree.heading("ID", text="ID")
             tree.heading("Datum", text="Datum")
